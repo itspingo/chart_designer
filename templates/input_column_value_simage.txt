@@ -1,0 +1,2 @@
+<img src="<?php echo $row['#fieldname']; ?>" height="60px" width="60px" />  \
+<input type="file" name="#fieldname[]"  id="#fieldname<?php echo $#tablename_randmno; ?>"  class="input-block-level"  />  

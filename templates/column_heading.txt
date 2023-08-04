@@ -1,0 +1,5 @@
+<div>
+		<table width="100%"><tr bgcolor="#ccccff">
+			<td><h3 align="left"><b>#label</b></h3></td>
+		</tr></table>
+	</div>

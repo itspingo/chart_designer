@@ -1,0 +1,5 @@
+<label class="strong">#label</label>
+<img src="<?php echo $#fieldname; ?>"  >
+<a href="delattachment.php?tbl= <?php echo $#tablename; ?>&fld=<?php echo $#fieldname; ?>&mdl=<?php echo $formname; ?>&rid=<?php echo $id; ?>"> Delete </a>
+					<input type="file" name="#fieldname"  id="#fieldname"  class="input-block-level"  />
+					<div id='diverror_#fieldname'></div>

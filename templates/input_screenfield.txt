@@ -1,0 +1,15 @@
+<label class="strong">#label</label>
+<select name="#fieldname"  id="#fieldname"  class="input-block-level"  #isrequired  >
+<?php
+	$sql = "select distinct #fieldname
+			from #tablename
+			where 1";
+	$res = mysqli_query($dbcon, $sql);
+	
+	echo '<option value="">--select--</option>';
+	while($row = mysqli_fetch_array($res)){
+		echo '<option value="'.$row[0].'">'.$row[0].'</option>';
+	}
+?>
+</select>
+<div id='diverror_#fieldname'></div>

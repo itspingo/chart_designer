@@ -1,0 +1,27 @@
+<label class="strong">#label</label>
+
+			<div>
+				<table width="100%"><tr bgcolor="#ccccff">
+					<td><h3 align="left"><b>Sub-module Heading</b></h3></td>
+				</tr></table>
+			</div>
+			
+		<div id="row-fluid">
+		
+					<table style="border: 1px solid gray;" id="table" width="100%">
+					
+						<tbody>
+						<tr>
+						<td><b>  </b> </td>
+						</tr>
+						<tr>
+						<td><b>  </b> </td>
+						</tr>
+						</tbody>
+					</table>
+					<div align="center">
+						<input type="button" id="btnaddqaa" name="btnaddqaa" value="Add Record" disabled />
+					</div>
+					<br />
+		</div>
+		

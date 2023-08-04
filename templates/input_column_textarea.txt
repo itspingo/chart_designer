@@ -1,0 +1,1 @@
+<textarea name="#fieldname[]"  id="#fieldname<?php echo $#tablename_randmno; ?>"  class="input-block-level" #isrequired ></textarea>

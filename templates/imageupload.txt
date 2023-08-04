@@ -1,0 +1,32 @@
+//echo "filename=".$_FILES["file_attached"]["name"];
+		if($_FILES["file_attached"]["name"] != '' ){
+			
+			$randval = rand(1,1000);
+			if ($_FILES["file_attached"]["error"] > 0)
+			  $error['file_attached'] = "An unknow error occured during upload, please try again.";
+			else {
+				$filen = trim($_FILES["file_attached"]["name"]);
+				//echo "filen:".$filen."<br>";
+				$filen_array = explode('.',$filen);
+				$file_namepart = $filen_array[0];
+				//echo "file_namepart:".$file_namepart."<br>";
+				$file_extpart=$filen_array[1];
+			   
+				$filen = $file_namepart.'_'.$randval.'.'.$file_extpart;
+				$path = 'uploads/'.$filen;
+				//echo $path."<br>";
+				if(move_uploaded_file($_FILES["file_attached"]["tmp_name"], $path)){
+				
+					$file_attached = $path;
+					$sqlfile = "update test_screen set file_attached = '".$path."' where id = '".$id."'";
+					//echo $sqlfile."<br>";
+					$resfile = mysqli_query($dbcon, $sqlfile);
+					//$lines = file($file_attached);
+					//$nlines=count(file($file_attached));
+				}else{
+					$error['file_attached'] = "Unable to upload the image. error:".$_FILES["file_attached"]["error"];
+				}
+			}
+		}
+		
+		

@@ -1,0 +1,23 @@
+<label class="strong">#label</label>
+<select name="#fieldname"  id="#fieldname"  class="form-control"  #isrequired  >
+<?php
+	$sql = "select d.data_entry, d.label
+			from lov_details d, lov_master m
+			where d.lov_masterid = m.id
+			and  d.active='Y'
+			and d.status='1'
+			and (m.clientid = '".$clientid."' OR m.clientid = 'ALL')
+			and m.lov_name = '#codelistname'";
+	$res = mysqli_query($dbcon, $sql);
+	
+	echo '<option value="">--select--</option>';
+	while($row = mysqli_fetch_assoc($res)){  ?>
+		<option value="<?php echo $row['data_entry']; ?>" <?php if($#fieldname == $row['data_entry']){ ?> SELECTED <?php } ?> ><?php echo $row['label']; ?></option>
+	<?php }
+?>
+</select>
+<?php if(group_access_rights($clientid, $usrid, $usrtype, $applicname, "Codes Listing", 'add') == 1) { ?>
+<a style="cursor:pointer;" class="btn btn-primary btn-icon glyphicons circle_plus" onClick="javascript:lov_popup('#codelistname');" ><i></i> Add</a>
+<?php } ?>
+<div id='diverror_#fieldname'></div>
+

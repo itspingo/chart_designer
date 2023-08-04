@@ -1,0 +1,14 @@
+<label class="strong">#label</label>
+<?php
+	$staticvals = "#radiostaticvalues";
+	$arstaticvals = explode(',',$staticvals);
+	$countvals = count($arstaticvals);
+	for($i=0; $i<$countvals; $i++){
+		echo '<input type="radio" name="#fieldname" id="#fieldname" value="'.str_replace(' ','_',$arstaticvals[$i]).'"'; 
+		if($#fieldname == str_replace(' ','_',$arstaticvals[$i])){
+			echo ' checked ';
+		}
+		echo '>'.'&nbsp&nbsp&nbsp'.ucwords($arstaticvals[$i]).'<br>'; 
+	}
+?>
+<div id='diverror_#fieldname'></div>				

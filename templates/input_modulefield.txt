@@ -1,0 +1,24 @@
+<label class="strong">#label</label>
+
+<?php
+	$tablname = '#moduletablename';
+	$sql = "select id, #modulefieldname
+		from #moduletablename
+		where active='Y'";
+		if($tablname == 'users'){
+			$sql .= "  and clientid = '".$clientid."'";
+		}
+			
+	$res = mysqli_query($dbcon, $sql);
+	echo '<select name="#fieldname"  id="#fieldname"  class="form-control"  #isrequired  >';
+	echo '<option value="">--select--</option>';
+	while($row = mysqli_fetch_assoc($res)){
+		echo '<option value="'.$row['id'].'"';
+		if($#fieldname == $row['id']){
+			echo ' selected ';
+		}
+		echo ' >'.$row['#modulefieldname'].'</option>';
+	}
+?>
+</select>
+<div id='diverror_#fieldname'></div>

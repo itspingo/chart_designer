@@ -1,0 +1,13 @@
+<label class="strong">#label</label>
+<select name="#fieldname"  id="#fieldname"  class="input-block-level"  #isrequired  >
+<?php
+	$staticvals = "#liststaticvalues";
+	$arstaticvals = explode($staticvals);
+	$countvals = count($arstaticvals);
+	for($i=0; $i<$countvals; $i++){
+		echo '<option value="'.$arstaticvals[$i].'">'.$arstaticvals[$i].'</option>';
+	}
+?>
+
+</select>
+<div id='diverror_#fieldname'></div>

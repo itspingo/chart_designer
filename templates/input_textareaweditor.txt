@@ -1,0 +1,4 @@
+<label class="strong">#label</label>
+					<textarea name="#fieldname"  id="#fieldname"  class="input-block-level" #isrequired ><?php echo $#fieldname; ?></textarea>
+				<script type="text/javascript">	new nicEditor({iconsPath : 'images/nicEditorIcons.gif'}).panelInstance('#fieldname'); </script>
+				<div id='diverror_#fieldname'></div>

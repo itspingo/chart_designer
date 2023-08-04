@@ -1,0 +1,17 @@
+<label class="strong">#label</label>
+<select name="#fieldname"  id="#fieldname"  class="input-block-level"  #isrequired  >
+<?php
+	$staticvals = "#liststaticvalues";
+	$arstaticvals = explode(',',$staticvals);
+	$countvals = count($arstaticvals);
+	echo '<option value="">--select--</option>';
+	for($i=0; $i<$countvals; $i++){
+		echo '<option value="'.$arstaticvals[$i].'"';
+		if($#fieldname == $arstaticvals[$i]){
+			echo ' selected ' ;
+		}
+		echo ' >'.$arstaticvals[$i].'</option>';
+	}
+?>
+</select>
+<div id='diverror_#fieldname'></div>

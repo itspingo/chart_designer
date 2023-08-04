@@ -1,0 +1,4 @@
+<?php if($row['#fieldname'] != ''){ ?> \
+			<a href="<?php echo $row['#fieldname']; ?>" style="cursor:pointer" target="_blank"  ><?php echo str_replace('uploads/','',$row['#fieldname']); ?></a>  \
+	<?php } ?>  \
+<input type="file" name="#fieldname[]"  id="#fieldname<?php echo $#tablename_randmno; ?>" class="input-block-level" />

@@ -1,0 +1,14 @@
+<label class="strong">#label</label>
+
+				<?php $arfilenames = explode(',',$#fieldname);
+				if(count($arfilenames)>0){
+					for($f=0; $f<count($arfilenames); $f++){ ?>
+						<a href="<?php echo $arfilenames[$f]; ?>" style="cursor:pointer" target="_blank"  ><?php echo str_replace('uploads/','',$arfilenames[$f]); ?></a>
+						<a href="delattachment.php?tbl= <?php echo $#tablename; ?>&fld=<?php echo $#fieldname; ?>&mdl=<?php echo $formname; ?>&rid=<?php echo $id; ?>&fln=<?php echo $arfilenames[$f]; ?>"> Delete </a><br>
+				<?php } 
+				}
+				?>
+
+	
+					<input type="file" name="#fieldname"  id="#fieldname" class="input-block-level" />
+					<div id='diverror_#fieldname'></div>

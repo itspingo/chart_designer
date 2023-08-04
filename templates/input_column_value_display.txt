@@ -1,0 +1,1 @@
+<input type="text" name="#fieldname[]"  id="#fieldname<?php echo $#tablename_randmno; ?>"  class="form-control"  value="<?php echo $row['#fieldname']; ?>"  disabled  />

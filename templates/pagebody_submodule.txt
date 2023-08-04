@@ -1,0 +1,157 @@
+<!-- ----------------------------- adding records into #tablename ------------------------------------------------------- -->
+
+<script>	
+function add_#tablename(){
+	
+	var table = document.getElementById("table_#tablename");
+	var row = table.insertRow(table.rows.length);
+	var randno = document.getElementById('#tablename_randmno').value;
+	randno++;
+	
+    #jsaddcols
+	#jsaddrow
+	#jsaddlastcol
+	
+	document.getElementById('#tablename_randmno').value=randno;
+	
+}
+
+function delrec_#tablename(control){
+	
+	 var vtable_name = "#tablename";
+	var vrowid = control.id;
+	var vrowRandNo = vrowid.replace("delit","");
+	//alert("function is called");
+	
+	var vrecid = document.getElementById('#tablename_recid'+vrowRandNo).value;
+	//var divelem = document.getElementById("div_#tablename"+vrowRandNo);
+	
+	//alert("vrowRandNo = "+vrowRandNo+" , vrecid: "+vrecid);
+	
+	var req = getXMLHTTP();		
+	if (req) {			
+		
+		
+		if(vrecid == ''){
+			//divelem.parentNode.removeChild(divelem);
+			var vtr=control.parentNode.parentNode;
+			vtr.parentNode.removeChild(vtr);
+		}else{
+			var vconfirm = confirm("Do you want to delete this record ?");
+			if(vconfirm){
+				
+				var dataString = 'tblname='+vtable_name+'&id='+vrecid;
+				//alert("data string: "+dataString);
+				req.onreadystatechange = function() {
+					if (req.readyState == 4) {
+						// only if "OK"
+						if (req.status == 200) {						
+							//divelem.parentNode.removeChild(divelem);	
+
+							var vtr=control.parentNode.parentNode;
+							vtr.parentNode.removeChild(vtr);							
+						} else {
+							alert("There was a problem while using XMLHTTP:\n" + req.statusText);
+						}
+					}				
+				}			
+				req.open("GET","modl.php?scrn=ajax_del_submodule_rec.php&"+dataString, true);
+				req.send(null);
+				
+				
+			}
+		}
+
+	}
+}
+
+</script>
+	
+	
+<?php
+
+
+	
+	if( $id != '' AND $_POST['continue'] == 'Y'  ){
+		for($i=0; $i < count($_POST['#tablename_recid']); $i++ ){
+			
+			
+				$sqlaction = "insert into #tablename set
+								parentid = '".$id."',
+								#table_cols_values
+							";
+				///echo $sqlaction."<br>";
+				$resaction = mysqli_query($dbcon, $sqlaction);
+				$recid = mysqli_insert_id($dbcon);
+				
+				#filesupload
+			
+			
+		}
+	}
+	
+?>
+	
+	<div>
+		<table width="100%"><tr bgcolor="#ccccff">
+			<td><h3 align="left"><b>#submodule_heading</b></h3></td>
+		</tr></table>
+	</div>
+	
+	<div id="row-fluid">
+		
+					<table style="border: 1px solid gray;" id="table_#tablename" width="100%">
+					
+					<tbody>
+					<tr>
+					
+					#submodule_heading_row
+					<td></td>
+					</tr>
+					
+					<?php
+						$#tablename_randmno = rand(1,99999);
+						if($id != ''){
+							$sql="select * from #tablename where parentid = '".$id."'";
+							$res = mysqli_query($dbcon, $sql);
+							while($row = mysqli_fetch_assoc($res)){
+								$#tablename_randmno++;
+						
+							
+					?>
+					
+						<tr>
+							#submodule_data_row
+							<td>
+								<input type="hidden" name="#tablename_recid[]" id="#tablename_recid<?php echo $#tablename_randmno; ?>" value="<?php echo $row['id']; ?>"  />
+								<a id="delit<?php echo $#tablename_randmno; ?>" onclick="delrec_#tablename(this)" style="cursor:pointer;">Delete</a>
+							</td>
+						</tr>	
+					
+					
+					<?php
+						}
+					}else{ ?>
+						<tr>
+							#submodule_data_row
+							<td>
+								<input type="hidden" name="#tablename_recid[]" id="#tablename_recid<?php echo $#tablename_randmno; ?>" value="" />
+								<a id="delit<?php echo $#tablename_randmno; ?>" onclick="delrec_#tablename(this)" style="cursor:pointer;">Delete</a>
+							</td>
+						</tr>
+					
+					<?php 
+					}
+					?>
+							
+					</tbody>
+					</table>
+					<div align="center">
+						<input type="hidden" name ="#tablename_randmno" id="#tablename_randmno" value="<?php echo $#tablename_randmno; ?>" />
+						<input type="button" id="btnadd_#tablename" name="btnadd_#tablename" value="Add Record" onClick="javascript:add_#tablename();" />
+					</div>
+					<br />
+		</div>
+		
+	<!--  ------------------------- end: adding records into #tablename -------------------------------------------------  -->
+	

@@ -1,0 +1,14 @@
+<select name="#fieldname[]"  id="#fieldname<?php echo $#tablename_randmno; ?>"  class="input-block-level"  #isrequired  >  \
+<option value="">--select--</option>  \
+<?php
+	$staticvals = "#liststaticvalues";
+	$arstaticvals = explode(',',$staticvals);
+	$countvals = count($arstaticvals);
+	for($i=0; $i<$countvals; $i++){
+		echo '<option value="'.$arstaticvals[$i].'"';
+		if($row['#fieldname'] == $arstaticvals[$i]){
+			echo ' selected ' ;
+		}
+		echo ' >'.$arstaticvals[$i].'</option>';
+	} ?> \
+</select>

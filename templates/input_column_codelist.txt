@@ -1,0 +1,15 @@
+<select name="#fieldname[]"  id="#fieldname<?php echo $#tablename_randmno; ?>"  class="form-control"   >  \
+<option value="">--select--</option>  \
+<?php
+	$sqlcl = "select d.data_entry, d.label
+			from lov_details d, lov_master m
+			where d.lov_masterid = m.id
+			and  d.active='Y'
+			and d.status='1'
+			and (m.clientid = '".$clientid."' OR m.clientid = 'ALL')
+			and m.lov_name = '#codelistname'";
+	$rescl = mysqli_query($dbcon, $sqlcl);
+	while($rowcl = mysqli_fetch_assoc($rescl)){  ?>  \
+		<option value="<?php echo $rowcl['data_entry']; ?>" ><?php echo $rowcl['label']; ?></option>  \
+	<?php }  ?>  \
+</select>

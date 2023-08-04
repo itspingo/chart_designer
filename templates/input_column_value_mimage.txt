@@ -1,0 +1,3 @@
+<img src="<?php echo $row['#fieldname']; ?>"  /> \
+<a href="delattachment.php?tbl= <?php echo $#tablename; ?>&fld=<?php echo $row['#fieldname']; ?>&mdl=<?php echo $formname; ?>&rid=<?php echo $id; ?>"> Delete </a> \
+					<input type="file" name="#fieldname[]"  id="#fieldname<?php echo $#tablename_randmno; ?>"  class="input-block-level" multiple="multiple" />
